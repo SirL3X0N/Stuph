@@ -1,6 +1,7 @@
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 theDateToday = today.toDateString();
+console.log (theDateToday)
 
 
 function whatDayIsIt(theDayToday){
