@@ -1,0 +1,7 @@
+// let xtr = 5
+
+// export {xtr}
+
+function xtr(){
+    return 'hello world'
+}
