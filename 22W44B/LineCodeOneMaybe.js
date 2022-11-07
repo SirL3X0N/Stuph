@@ -8,5 +8,3 @@ if (theDay=='Sun'){
 }   else{
     console.log ("It's not sunday")
 }
-
-console.log (theDateToday)
