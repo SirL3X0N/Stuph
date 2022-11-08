@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    justify-content: center;
+}
+body {
+    background-color: forestgreen;
+}
+button {
+    padding: 10px 30px;
+    margin: 5px;
+    background-color:rgb(240, 235, 225);
+    border-radius: 8px;
+    border-color: rgb(67, 67, 67);
+    outline: 5px;
+    position: fixed;
+
+}
