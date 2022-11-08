@@ -14,9 +14,7 @@ function generateCard(cards, suits) {
 }
 
 function dealMyHandPlease(hand) {
-	if (hand.length >= 2){
-		hand.splice(0,50)
-	}
+	hand.splice(0,50)
 	hand.push(generateCard(cards, suits))
 	
 	while (hand.length < 2) {
