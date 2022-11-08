@@ -1,9 +1,10 @@
-div {
+body {
     display: flex;
     justify-content: center;
-}
-body {
     background-color: forestgreen;
+}
+#displayHand{
+    font-size: 200%!important;
 }
 button {
     padding: 10px 30px;

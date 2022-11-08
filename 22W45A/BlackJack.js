@@ -34,7 +34,13 @@ function drawCard(hand) {
 		}
 		if (!duplicateCard) {
 	        hand.push(card)
-			document.getElementById("displayHand").innerHTML=hand
+			// document.getElementById("displayHand").innerHTML=hand
+			document.getElementById("displayHand").innerHTML=
+				`
+				<img src='picturesOfCards/${hand[0]}.png'>
+				<img src='picturesOfCards/${hand[1]}.png'>
+				`
+				;
 	    }
 		
 	}
