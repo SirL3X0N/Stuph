@@ -98,3 +98,4 @@ function resetEverything(deck,playersHand){
 	`
 	console.log (hand)
 }
+
