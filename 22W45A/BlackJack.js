@@ -1,63 +1,100 @@
-// These are the arrays, they hold the posible cards and suits which will be added to the hand
-
 cards = [2,3,4,5,6,7,8,9,10,'J','Q','K','A']
 suits = ['H', 'D', 'C', 'S']
-hand = []
-
-// This Gets a random number between 0 and the specified 'max' digit
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-
-// This will get 2 random numbers from getRandomInt and grab a card and suit based off of those
-// numbers. It then returns the value of card
+deck = []
+theDealtCard = []
+playersHand = []
 
 function generateCard(cards, suits) {
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * max);
+	}
     cardDigit = cards[getRandomInt(13)]
     cardSuit = suits[getRandomInt(4)]
     card = cardDigit + cardSuit
-    return (card)
+    return card
 }
 
-// Checks if the card collected from generateCard already is in the hand. If it is then it generates
-// a new card. When the card generated is unuiqe then it is added to the hand and the new hand is displayed
-
-function drawCard(hand) {
-	card = generateCard(cards, suits);
-	duplicateCard = false;
-
-	// loop through cards in hand to see if any matches the newly generated card
-	for (let index = 0; index < hand.length; index++) {
-		if (card == hand[index]) {
-			duplicateCard = true;
-		}
-		if (!duplicateCard) {
-	        hand.push(card)
-			// document.getElementById("displayHand").innerHTML=hand
-			document.getElementById("displayHand").innerHTML=
-				`
-				<img src='picturesOfCards/${hand[0]}.png'>
-				<img src='picturesOfCards/${hand[1]}.png'>
-				`
-				;
-	    }
-		
-	}
-}
-
-// This resets the hand then adds two cards to it using the functions above
-
-function dealMyHandPlease(hand) {
-	hand.splice(0,50)
-	hand.push(generateCard(cards, suits))
+function shuffleDeck(deck) {
+	while (deck.length < 52) {
+	    card = generateCard(cards, suits)
+	    duplicateCard = false
 	
-	while (hand.length < 2) {
-	    drawCard(hand);
+		for (let index = 0; index < deck.length; index++) {
+	        if (card == deck[index]) {
+	            duplicateCard = true
+	        }
+	    }
+	
+	    if (!duplicateCard) {
+	        deck.push(card)
+	    }
 	}
 }
 
-// When the dealButton is clicked it will activate dealMyHandPlease
+function drawCard(deck){
+	theDealtCard.push(deck[0])
+	deck.splice (0,1)
+}
+
+function newGame (theDealtCard,playersHand){
+	for (let index = 0; index < 2; index++) {
+		drawCard(deck)
+		playersHand.push(theDealtCard[0])
+		theDealtCard.splice (0,1)
+	}
+	document.getElementById("playerCard1").src =
+	`
+	picturesOfCards/${playersHand[0]}.png
+	`
+	document.getElementById("playerCard2").src =
+	`
+	picturesOfCards/${playersHand[1]}.png
+	`
+
+}
+
+function hitPlayer (theDealtCard,playersHand){
+	drawCard(deck)
+	playersHand.push(theDealtCard[0])
+	theDealtCard.splice (0,1)
+	document.getElementById("playerCard3").src =
+	`
+	picturesOfCards/${playersHand[2]}.png
+	`
+	document.getElementById("playerCard4").src =
+	`
+	picturesOfCards/${playersHand[3]}.png
+	`
+	document.getElementById("playerCard5").src =
+	`
+	picturesOfCards/${playersHand[4]}.png
+	`
+}
+
 document.getElementById('dealButton').onclick = function(){
-	dealMyHandPlease(hand)
+	resetEverything(deck,playersHand)
+}
+
+document.getElementById('hitmeButton').onclick = function(){
+	hitPlayer (theDealtCard,playersHand)
+}
+
+function resetEverything(deck,playersHand){
+	deck.splice (0,52)
+	playersHand.splice (0,52)
+	shuffleDeck(deck)
+	newGame(theDealtCard,playersHand)
+	document.getElementById("playerCard3").src =
+	`
+	picturesOfCards/${playersHand[2]}.png
+	`
+	document.getElementById("playerCard4").src =
+	`
+	picturesOfCards/${playersHand[3]}.png
+	`
+	document.getElementById("playerCard5").src =
+	`
+	picturesOfCards/${playersHand[4]}.png
+	`
+	console.log (hand)
 }

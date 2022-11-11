@@ -1,18 +1,54 @@
 body {
     display: flex;
-    justify-content: center;
     background-color: forestgreen;
 }
-#displayHand{
-    font-size: 200%!important;
+.cardImage1{
+    height: 200px;
+    position: fixed;
+    bottom:20px;
+    left:20%;
 }
-button {
+.cardImage2{
+    height: 200px;
+    position: fixed;
+    bottom:20px;
+    left:32%;
+}
+.cardImage3 {
+    height: 200px;
+    position: fixed;
+    bottom:20px;
+    left:44%;
+}
+.cardImage4 {
+    height: 200px;
+    position: fixed;
+    bottom:20px;
+    left:56%;
+}
+.cardImage5 {
+    height: 200px;
+    position: fixed;
+    bottom:20px;
+    left:68%;
+}
+#dealButton {
     padding: 10px 30px;
     margin: 5px;
     background-color:rgb(240, 235, 225);
     border-radius: 8px;
     border-color: rgb(67, 67, 67);
     outline: 5px;
-    position: fixed;
-
+    position: absolute;
 }
+#hitmeButton {
+    padding: 10px 30px;
+    margin: 5px;
+    background-color:rgb(240, 235, 225);
+    border-radius: 8px;
+    border-color: rgb(67, 67, 67);
+    outline: 5px;
+    position: absolute;
+    top: 50px;
+}
+
