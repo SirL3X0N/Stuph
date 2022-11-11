@@ -50,5 +50,6 @@ body {
     outline: 5px;
     position: absolute;
     top: 50px;
+    display: none;
 }
 

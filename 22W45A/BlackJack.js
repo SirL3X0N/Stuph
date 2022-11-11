@@ -50,15 +50,17 @@ function newGame (theDealtCard,playersHand){
 	`
 	picturesOfCards/${playersHand[1]}.png
 	`
-
+	console.log (playersHand)
 }
 
 function hitPlayer (theDealtCard,playersHand){
-	drawCard(deck)
-	playersHand.push(theDealtCard[0])
-	theDealtCard.splice (0,1)
+	if (playersHand.length <5&&playersHand.length >1){
+		drawCard(deck)
+		playersHand.push(theDealtCard[0])
+		theDealtCard.splice (0,1)
+	}
 	document.getElementById("playerCard3").src =
-	`
+		`
 	picturesOfCards/${playersHand[2]}.png
 	`
 	document.getElementById("playerCard4").src =
@@ -69,6 +71,7 @@ function hitPlayer (theDealtCard,playersHand){
 	`
 	picturesOfCards/${playersHand[4]}.png
 	`
+	console.log(playersHand)
 }
 
 document.getElementById('dealButton').onclick = function(){
@@ -80,6 +83,7 @@ document.getElementById('hitmeButton').onclick = function(){
 }
 
 function resetEverything(deck,playersHand){
+	document.getElementById('hitmeButton').style.display = "block"
 	deck.splice (0,52)
 	playersHand.splice (0,52)
 	shuffleDeck(deck)
@@ -96,6 +100,6 @@ function resetEverything(deck,playersHand){
 	`
 	picturesOfCards/${playersHand[4]}.png
 	`
-	console.log (hand)
+	console.log (playersHand)
 }
 
