@@ -85,7 +85,7 @@ document.getElementById('hitmeButton').onclick = function(){
 function resetEverything(deck,playersHand){
 	document.getElementById('hitmeButton').style.display = "block"
 	deck.splice (0,52)
-	playersHand.splice (0,52)
+	playersHand.splice (0,5)
 	shuffleDeck(deck)
 	newGame(theDealtCard,playersHand)
 	document.getElementById("playerCard3").src =
