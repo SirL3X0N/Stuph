@@ -1,0 +1,17 @@
+.aCard {
+    width: 100px;
+    height: auto;
+}
+
+#dealButton {
+    position: fixed;
+     bottom:2%;
+     left:2%
+}
+
+#hitmeButton {
+    position: fixed;
+    bottom:5%;
+    left:2%;
+    display: none;
+}
