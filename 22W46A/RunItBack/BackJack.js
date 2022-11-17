@@ -4,6 +4,8 @@ deck = []
 theDealtCard = []
 playersHand = []
 playersHandValue = []
+botHand = []
+botHandValue = []
 
 function countMyHand (playersHandValue,playersHand){
 	playersHandValue.splice(0,50)
@@ -20,6 +22,12 @@ function countMyHand (playersHandValue,playersHand){
 	while (thePlayersHandValue > 21&& Aces >0){
 		Aces--
 		thePlayersHandValue = (thePlayersHandValue - 10)
+	}
+	if (thePlayersHandValue > 21){
+		console.log ('You Lose')
+	}
+	if (thePlayersHandValue < 22&&playersHand.length==5){
+		console.log ('You Win')
 	}
 }
 
@@ -49,7 +57,6 @@ function shuffleDeck(deck) {
 	    if (!duplicateCard) {
 	        deck.push(card)
 }}
-console.log (deck)
 }
 
 
@@ -58,16 +65,24 @@ function drawCard(deck,theDealtCard){
 	deck.splice (0,1)
 }
 
-function newGame (theDealtCard,playersHand){
+function newGame (theDealtCard,playersHand,botHand){
 	playersHandValue.splice (0,20)
 	for (let index = 0; index < 2; index++) {
 		drawCard(deck,theDealtCard)
 		playersHand.push(theDealtCard[0])
 		theDealtCard.splice (0,1)
+		drawCard(deck,theDealtCard)
+		botHand.push(theDealtCard[0])
+		theDealtCard.splice (0,1)
 	}
+
 	  countMyHand(playersHandValue,playersHand)
 	  console.log (thePlayersHandValue)
 	console.log (playersHand)
+	console.log (botHand)
+	if (thePlayersHandValue == 21){
+		console.log ('You Win')
+	}
 }
 
 function hitPlayer (theDealtCard){
@@ -85,10 +100,7 @@ function resetEverything(deck,playersHand){
 	deck.splice (0,52)
 	playersHand.splice (0,5)
 	shuffleDeck(deck)
-	newGame(theDealtCard,playersHand)
+	newGame(theDealtCard,playersHand,botHand)
 }
 
 resetEverything(deck,playersHand)
-hitPlayer (theDealtCard,playersHand)
-hitPlayer (theDealtCard,playersHand)
-hitPlayer (theDealtCard,playersHand)

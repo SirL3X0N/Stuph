@@ -4,6 +4,8 @@ deck = []
 theDealtCard = []
 playersHand = []
 playersHandValue = []
+botHand = []
+botHandValue = []
 
 function countMyHand (playersHandValue,playersHand){
 	playersHandValue.splice(0,50)
@@ -140,4 +142,3 @@ function resetEverything(deck,playersHand){
 	"picturesOfCards\None.png"
 	console.log (playersHand)
 }
-
