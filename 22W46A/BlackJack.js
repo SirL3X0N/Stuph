@@ -5,6 +5,30 @@ theDealtCard = []
 playersHand = []
 playersHandValue = []
 
+function countMyHand (playersHandValue,playersHand){
+	playersHandValue.splice(0,50)
+	Aces = 0
+	for (let i = 0; i < playersHand.length; i++) {
+		if (playersHand[i][0]==11){
+			Aces++
+		}
+		playersHandValue.push (playersHand[i][0])
+		thePlayersHandValue = playersHandValue.reduce((a, b) => {
+			return a + b
+		  })
+	}
+	while (thePlayersHandValue > 21&& Aces >0){
+		Aces--
+		thePlayersHandValue = (thePlayersHandValue - 10)
+	}
+	if (thePlayersHandValue > 21){
+		document.getElementById("Results").innerHTML = 'You Lose'
+	}
+	if (thePlayersHandValue < 22&&playersHand.length==5){
+		document.getElementById("Results").innerHTML = 'You Win'
+	}
+}
+
 function generateCard(cards, suits) {
 	function getRandomInt(max) {
 		return Math.floor(Math.random() * max);
@@ -30,9 +54,7 @@ function shuffleDeck(deck) {
 	
 	    if (!duplicateCard) {
 	        deck.push(card)
-	    }
-	}
-}
+}}}
 
 
 function drawCard(deck){
@@ -41,21 +63,15 @@ function drawCard(deck){
 }
 
 function newGame (theDealtCard,playersHand){
-	playersHandValue.splice (0,20)
 	for (let index = 0; index < 2; index++) {
 		drawCard(deck)
 		playersHand.push(theDealtCard[0])
 		theDealtCard.splice (0,1)
 	}
-	for (let i = 0; i < playersHand.length; i++) {
-		playersHandValue.push (playersHand[i][0])
-	}
-	thePlayersHandValue = playersHandValue.reduce((a, b) => {
-		return a + b;
-	  });
-	  console.log (thePlayersHandValue)
-	  document.getElementById("Value").innerHTML =
-	  thePlayersHandValue
+	countMyHand (playersHandValue, playersHand)
+	console.log (thePlayersHandValue)
+	document.getElementById("Value").innerHTML =
+	thePlayersHandValue
 	document.getElementById("playerCard1").src =
 	`
 	picturesOfCards/${playersHand[0][1]}.png
@@ -65,36 +81,39 @@ function newGame (theDealtCard,playersHand){
 	picturesOfCards/${playersHand[1][1]}.png
 	`
 	console.log (playersHand)
+	if (thePlayersHandValue == 21){
+		document.getElementById("Results").innerHTML = 'You Win'
+	}
 }
 
 function hitPlayer (theDealtCard,playersHand){
-	if (playersHand.length <4&&playersHand.length >1){
+	if (playersHand.length <5&&playersHand.length >1){
 		drawCard(deck)
 		playersHand.push(theDealtCard[0])
 		theDealtCard.splice (0,1)
 	}
-	playersHandValue.splice (0,20)
-	for (let i = 0; i < playersHand.length; i++) {
-		playersHandValue.push (playersHand[i][0])
-	}
-	thePlayersHandValue = playersHandValue.reduce((a, b) => {
-		return a + b;
-	  });
+	countMyHand (playersHandValue, playersHand)
 	  console.log (thePlayersHandValue)
 	  document.getElementById("Value").innerHTML =
 	  thePlayersHandValue
+	  if (playersHand.length >2){
 	document.getElementById("playerCard3").src =
-		`
+	`
 	picturesOfCards/${playersHand[2][1]}.png
 	`
+	  }
+	  if (playersHand.length >3){
 	document.getElementById("playerCard4").src =
 	`
 	picturesOfCards/${playersHand[3][1]}.png
 	`
+	  }
+	  if (playersHand.length >4){
 	document.getElementById("playerCard5").src =
 	`
 	picturesOfCards/${playersHand[4][1]}.png
 	`
+	  }
 	console.log(playersHand)
 }
 
@@ -106,18 +125,19 @@ document.getElementById('hitmeButton').onclick = function(){
 	hitPlayer (theDealtCard,playersHand)
 }
 
-function resetEverything(deck,playersHand,playersHandValue){
+function resetEverything(deck,playersHand){
+	document.getElementById("Results").innerHTML = ''
 	document.getElementById('hitmeButton').style.display = "block"
 	deck.splice (0,52)
 	playersHand.splice (0,5)
 	shuffleDeck(deck)
 	newGame(theDealtCard,playersHand)
 	document.getElementById("playerCard3").src =
-	"picturesOfCards\Undefined.png"
+	"picturesOfCards\None.png"
 	document.getElementById("playerCard4").src =
-	"picturesOfCards\Undefined.png"
+	"picturesOfCards\None.png"
 	document.getElementById("playerCard5").src =
-	"picturesOfCards\Undefined.png"
+	"picturesOfCards\None.png"
 	console.log (playersHand)
 }
 
