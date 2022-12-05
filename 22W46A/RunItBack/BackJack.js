@@ -30,6 +30,27 @@ function countMyHand (playersHandValue,playersHand){
 		console.log ('You Win')
 	}
 }
+function countBotHand (botHandValue,botHand){
+	botHandValue.splice(0,50)
+	Bces = 0
+	for (let i = 0; i < botHand.length; i++) {
+		if (botHand[i][0]==11){
+			Bces++
+		}
+		botHandValue.push (botHand[i][0])
+		theBotHandValue = botHandValue.reduce((a, b) => {
+			return a + b
+		  })
+	}
+	while (theBotHandValue > 21&& Bces >0){
+		Bces--
+		theBotHandValue = (theBotHandValue - 10)
+	}
+	if (theBotHandValue > 21){
+		console.log ('You Win')
+	}
+	return theBotHandValue
+}
 
 function generateCard(cards, suits) {
 	function getRandomInt(max) {
@@ -77,9 +98,11 @@ function newGame (theDealtCard,playersHand,botHand){
 	}
 
 	  countMyHand(playersHandValue,playersHand)
-	  console.log (thePlayersHandValue)
-	console.log (playersHand)
-	console.log (botHand)
+	  countBotHand(botHandValue,botHand)
+	  console.log ('thePlayersHandValue',thePlayersHandValue)
+	  console.log ('theBotHandValue',theBotHandValue)
+	console.log ('playersHand',playersHand)
+	console.log ('botHand',botHand)
 	if (thePlayersHandValue == 21){
 		console.log ('You Win')
 	}
@@ -96,6 +119,18 @@ function hitPlayer (theDealtCard){
 	console.log(playersHand)
 }
 
+function stand (theDealtCard,botHand,theBotHandValue){
+	console.log (theBotHandValue)
+	if (theBotHandValue < 17){
+		drawCard(deck,theDealtCard)
+		botHand.push(theDealtCard[0])
+		theDealtCard.splice (0,1)
+		countBotHand(botHandValue,botHand)
+		console.log ('botHandValue',botHandValue)
+	  console.log ('botHand',botHand)
+	}
+}
+
 function resetEverything(deck,playersHand){
 	deck.splice (0,52)
 	playersHand.splice (0,5)
@@ -104,3 +139,4 @@ function resetEverything(deck,playersHand){
 }
 
 resetEverything(deck,playersHand)
+stand(botHand,botHandValue,theDealtCard)
