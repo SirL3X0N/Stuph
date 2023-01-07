@@ -1,0 +1,41 @@
+.thePlayer {
+    position: fixed;
+    left: 50%;
+    bottom: 25%;
+    height: 2rem;
+    width: 2rem;
+    background-color: aqua;
+    border-radius: 100%;
+}
+
+.thePlayerBody {
+    height: 80%;
+    width: 80%;
+    margin: 10%;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.daDirt {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: 17%;
+    background-color: rgb(85, 55, 6);
+}
+
+.daFloor {
+    position: fixed;
+    bottom: 15%;
+    width: 100%;
+    height: 10%;
+    background-color: green;
+}
+
+.daFloorHitbox {
+    position: fixed;
+    width: 100%;
+    height: 0.5%;
+    bottom: 24.5%;
+    background-color: black;
+}

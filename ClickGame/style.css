@@ -1,0 +1,49 @@
+.titlebarthang {
+    position: fixed;
+    height: 10%;
+    left: 30%;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.251);
+}
+
+.mytitle {
+    text-align: center;
+    color: white;
+    font-size: 300%;
+}
+
+.theTarget {
+    height: 1.5rem;
+    width: 1.5rem;
+    position: fixed;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    display: block;
+}
+
+.theendscreen {
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.052);
+}
+
+.gameover {
+    text-align: center;
+    font-size: 5rem;
+    color: white;
+}
+
+.myTable {
+    position: fixed;
+    text-align: center;
+    width: 20%;
+    left: 40%;
+    top: 30%;
+    background-color: rgba(240, 248, 255, 0);
+    color: white;
+}
